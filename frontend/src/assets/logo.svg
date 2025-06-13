@@ -1,0 +1,21 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 10 L40 10 L40 40 L20 40 Z" fill="url(#gradient1)" />
+  <path d="M10 15 L20 10 L20 40 L10 35 Z" fill="url(#gradient2)" />
+  <path d="M40 10 L50 15 L50 35 L40 40 Z" fill="url(#gradient2)" />
+  <path d="M30 25 A5 5 0 1 0 30 35 A5 5 0 1 0 30 25" fill="white" />
+  <text x="60" y="32" font-family="Arial" font-weight="bold" font-size="20" fill="url(#gradient3)">RealFlow AI</text>
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#7E22CE" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,55 @@
+:root {
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --secondary: #7E22CE;
+  --secondary-hover: #6B21A8;
+  --accent: #A855F7;
+  --accent-hover: #9333EA;
+  --background: #FFFFFF;
+  --foreground: #1F2937;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #4F46E5;
+  --radius: 0.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.gradient-border {
+  border-image: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%) 1;
+}
+
+.hero-bg {
+  background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.1) 0%, rgba(126, 34, 206, 0.05) 100%);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.2) 0%, rgba(126, 34, 206, 0.2) 100%);
+  color: var(--primary);
+}
+
+.testimonial-card {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%) 1;
+}
