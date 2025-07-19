@@ -3,14 +3,14 @@ import { useQuery, useMutation } from 'react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-// API base URL - would be configured based on environment
-const API_URL = 'http://localhost:5000';
+// API base URL - configured for production environment
+const API_URL = 'https://realflow-ai.com/api';
 
 // Auth context
 export const AuthContext = React.createContext({
   isAuthenticated: false,
   user: null as any,
-  login: async (_email: string, _password: string): Promise<boolean> => { return false; },
+  login: async (_email: string, _password: string ): Promise<boolean> => { return false; },
   logout: async () => {},
   loading: false,
   error: null as string | null
@@ -27,7 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   React.useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/auth/user`, { withCredentials: true });
+        const response = await axios.get(`${API_URL}/auth/user`, { withCredentials: true });
         if (response.data.success) {
           setIsAuthenticated(true);
           setUser(response.data.user);
@@ -46,14 +46,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await axios.post(
-        `${API_URL}/api/auth/login`,
+        `${API_URL}/auth/login`,
         { email, password },
         { withCredentials: true }
       );
-      
+
       if (response.data.success) {
         setIsAuthenticated(true);
         setUser(response.data.user);
@@ -77,9 +77,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Logout function
   const logout = async () => {
     setLoading(true);
-    
+
     try {
-      await axios.post(`${API_URL}/api/auth/logout`, {}, { withCredentials: true });
+      await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
       setIsAuthenticated(false);
       setUser(null);
       toast.success('Logged out successfully');
@@ -109,7 +109,7 @@ export const useAuth = () => {
 // API hooks for leads
 export const useSubmitLead = () => {
   return useMutation(
-    (leadData: any) => axios.post(`${API_URL}/api/leads`, leadData),
+    (leadData: any) => axios.post(`${API_URL}/leads`, leadData),
     {
       onSuccess: () => {
         toast.success('Thank you! Your information has been submitted successfully.');
@@ -126,7 +126,7 @@ export const useClientResources = () => {
   return useQuery(
     'clientResources',
     async () => {
-      const response = await axios.get(`${API_URL}/api/client/resources`, { withCredentials: true });
+      const response = await axios.get(`${API_URL}/client/resources`, { withCredentials: true });
       return response.data.resources;
     },
     {
@@ -143,7 +143,7 @@ export const useClientMessages = () => {
   return useQuery(
     'clientMessages',
     async () => {
-      const response = await axios.get(`${API_URL}/api/client/messages`, { withCredentials: true });
+      const response = await axios.get(`${API_URL}/client/messages`, { withCredentials: true });
       return response.data.messages;
     },
     {
@@ -158,8 +158,8 @@ export const useClientMessages = () => {
 // API hook for sending client message
 export const useSendClientMessage = () => {
   return useMutation(
-    (messageData: { content: string }) => 
-      axios.post(`${API_URL}/api/client/messages`, messageData, { withCredentials: true }),
+    (messageData: { content: string }) =>
+      axios.post(`${API_URL}/client/messages`, messageData, { withCredentials: true }),
     {
       onSuccess: () => {
         toast.success('Message sent successfully.');
@@ -176,7 +176,7 @@ export const useClientProject = () => {
   return useQuery(
     'clientProject',
     async () => {
-      const response = await axios.get(`${API_URL}/api/client/project`, { withCredentials: true });
+      const response = await axios.get(`${API_URL}/client/project`, { withCredentials: true });
       return response.data.project;
     },
     {
